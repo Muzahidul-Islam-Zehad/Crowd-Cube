@@ -7,7 +7,7 @@ import MyCampaign from "../Pages/MyCampaign";
 import MyDonation from "../Pages/MyDonation";
 import LoginPage from "../Pages/LoginPage";
 import RegisterPage from "../Pages/RegisterPage";
-import PrivateRoute from "./PrivateRoute";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -20,11 +20,12 @@ const router = createBrowserRouter([
             },
             {
                 path:'/allCampaign',
-                element: <AllCampaign></AllCampaign>
+                element: <AllCampaign></AllCampaign>,
+                loader: () => fetch('http://localhost:5000/campaigns')
             },
             {
                 path: '/addNewCampaign',
-                element: <PrivateRoute><AddNewCampaign></AddNewCampaign></PrivateRoute>
+                element: <PrivateRoute><AddNewCampaign></AddNewCampaign></PrivateRoute>,
             },
             {
                 path: '/myCampaign',
