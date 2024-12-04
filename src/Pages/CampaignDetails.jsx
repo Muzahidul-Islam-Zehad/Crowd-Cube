@@ -11,6 +11,12 @@ const CampaignDetails = () => {
     const handleDonateButton = () =>{
         const donatedUser = {
             id : loadedData._id,
+            campaignTitle: loadedData.campaignTitle,
+            campaignType: loadedData.campaignType,
+            thumbnail: loadedData.thumbnail,
+            description: loadedData.description,
+            minimumDonationAmount: loadedData.minimumDonationAmount,
+            deadline: loadedData.deadline,
             name: user.displayName,
             email: user.email
         }

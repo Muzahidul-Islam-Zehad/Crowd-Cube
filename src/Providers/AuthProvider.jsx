@@ -9,6 +9,7 @@ const AuthProvider = ({children}) => {
     const [user, setUser] = useState([]);
     const [campaign, setCampaign] = useState([]);
     const [myCamp, setMyCamp] = useState([]);
+    const [myDonation, setMyDonation] = useState([]);
     const [loading, setLoading]= useState(true);
 
     useEffect(() => {
@@ -58,6 +59,8 @@ const AuthProvider = ({children}) => {
         setCampaign,
         myCamp,
         setMyCamp,
+        myDonation,
+        setMyDonation,
     }
 
 
