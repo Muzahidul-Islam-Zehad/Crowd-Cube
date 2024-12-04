@@ -1,6 +1,11 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { authContext } from "../Providers/AuthProvider";
 
 const Navbar = () => {
+
+    const { user, logoutuser } = useContext(authContext);
+
     const links = <>
         <li><NavLink to={'/'}>Home</NavLink></li>
         <li><NavLink to={'/allCampaign'}>All Campaign</NavLink></li>
@@ -8,6 +13,12 @@ const Navbar = () => {
         <li><NavLink to={'/myCampaign'}>My Campaign</NavLink></li>
         <li><NavLink to={'/myDonation'}>My Donations</NavLink></li>
     </>
+
+    const handleLogOut = () =>{
+        logoutuser()
+        .then()
+        .catch(err => console.log(err));
+    }
     return (
         <div>
             <div className="navbar bg-base-100">
@@ -42,13 +53,25 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end">
                     <div className="join">
-                        <Link to={'/login'}>
-                            <button className="btn join-item">Login</button>
-                        </Link>
-                        <Link to={'/register'}>
-                            <button className="btn join-item">Register</button>
-                        </Link>
-                        
+                        {
+                            user?.email ?
+                                <div>
+                                    <button onClick={handleLogOut} className="btn join-item">Log Out</button>
+                                </div>
+
+                                :
+                                <div>
+                                    <Link to={'/login'}>
+                                        <button className="btn join-item">Login</button>
+                                    </Link>
+                                    <Link to={'/register'}>
+                                        <button className="btn join-item">Register</button>
+                                    </Link>
+                                </div>
+                        }
+
+
+
                     </div>
                 </div>
             </div>

@@ -1,6 +1,33 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { authContext } from "../Providers/AuthProvider";
 
 const LoginPage = () => {
+    const { googleLogin, setUser, loginWithEmailAndPassword } = useContext(authContext);
+    const navigate = useNavigate();
+
+    const LoginWithGoogle = () => {
+        googleLogin()
+            .then(result => {
+                setUser(result.user);
+            })
+            .catch(err => { console.log(err.massege) });
+    }
+
+    const handleLoginForm = (e) =>{
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        loginWithEmailAndPassword(email, password)
+        .then(result => {
+            setUser(result.user);
+            navigate('/');
+        })
+
+    }
+
     return (
         <div>
             <div className="min-h-screen bg-gray-100 flex items-center justify-center">
@@ -8,13 +35,14 @@ const LoginPage = () => {
                     <h2 className="text-2xl font-bold text-center text-gray-700 mb-6">
                         Welcome Back!
                     </h2>
-                    <form className="space-y-4">
+                    <form onSubmit={handleLoginForm} className="space-y-4">
                         {/* Email Field */}
                         <div>
                             <label htmlFor="email" className="block text-sm font-medium text-gray-600">
                                 Email Address
                             </label>
                             <input
+                                name="email"
                                 type="email"
                                 id="email"
                                 placeholder="Enter your email"
@@ -28,6 +56,7 @@ const LoginPage = () => {
                                 Password
                             </label>
                             <input
+                                name="password"
                                 type="password"
                                 id="password"
                                 placeholder="Enter your password"
@@ -47,7 +76,7 @@ const LoginPage = () => {
                     <div className="divider my-6">or</div>
 
                     {/* Google Login */}
-                    <button className="btn btn-outline w-full hover:bg-gray-100">
+                    <button onClick={LoginWithGoogle} className="btn btn-outline w-full hover:bg-gray-100">
                         <img
                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"
                             alt="Google Icon"
