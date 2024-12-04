@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { authContext } from "../Providers/AuthProvider";
 
 const RegisterPage = () => {
-    const { googleLogin, setUser, registerWithEmailAndPassword } = useContext(authContext);
+    const { googleLogin, setUser, registerWithEmailAndPassword, updateUserProfile } = useContext(authContext);
     const navigate = useNavigate();
 
     const LoginWithGoogle = () => {
@@ -25,27 +25,32 @@ const RegisterPage = () => {
         const hasUppercase = /(?=.*[A-Z])/;
         const hasLowercase = /(?=.*[a-z])/;
 
-        if(password.length < 6)
-        {
+        if (password.length < 6) {
             alert('password must be atleast 6 character');
             return;
         }
-        else if(!hasUppercase.test(password))
-        {
+        else if (!hasUppercase.test(password)) {
             alert('password must have one uppercase letter');
             return;
         }
-        else if(!hasLowercase.test(password))
-        {
+        else if (!hasLowercase.test(password)) {
             alert('password must have one lowercase letter');
             return;
         }
 
         const userDatabse = { name, email, photo };
+        const updatedData = {
+            displayName: name,
+            photoURL: photo
+        }
 
         registerWithEmailAndPassword(email, password)
             .then(result => {
-                
+
+                updateUserProfile(updatedData)
+                    .then()
+                    .catch(err => console.log(err));
+
                 fetch('http://localhost:5000/users', {
                     method: 'POST',
                     headers: {
