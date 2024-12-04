@@ -7,6 +7,7 @@ import MyCampaign from "../Pages/MyCampaign";
 import MyDonation from "../Pages/MyDonation";
 import LoginPage from "../Pages/LoginPage";
 import RegisterPage from "../Pages/RegisterPage";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -23,7 +24,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/addNewCampaign',
-                element: <AddNewCampaign></AddNewCampaign>
+                element: <PrivateRoute><AddNewCampaign></AddNewCampaign></PrivateRoute>
             },
             {
                 path: '/myCampaign',

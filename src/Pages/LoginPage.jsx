@@ -1,10 +1,11 @@
 import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { authContext } from "../Providers/AuthProvider";
 
 const LoginPage = () => {
     const { googleLogin, setUser, loginWithEmailAndPassword } = useContext(authContext);
     const navigate = useNavigate();
+    const location = useLocation();
 
     const LoginWithGoogle = () => {
         googleLogin()
@@ -23,7 +24,7 @@ const LoginPage = () => {
         loginWithEmailAndPassword(email, password)
         .then(result => {
             setUser(result.user);
-            navigate('/');
+            navigate(location?.state ? location.state : '/');
         })
 
     }
