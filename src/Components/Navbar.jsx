@@ -10,7 +10,7 @@ const Navbar = () => {
         <li><NavLink to={'/'}>Home</NavLink></li>
         <li><NavLink to={'/allCampaign'}>All Campaign</NavLink></li>
         <li><NavLink to={'/addNewCampaign'}>Add New Campaign</NavLink></li>
-        <li><NavLink to={'/myCampaign'}>My Campaign</NavLink></li>
+        <li><NavLink to={`/myCampaign/${user.email}`}>My Campaign</NavLink></li>
         <li><NavLink to={'/myDonation'}>My Donations</NavLink></li>
     </>
 

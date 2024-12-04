@@ -7,6 +7,8 @@ export const authContext = createContext();
 const AuthProvider = ({children}) => {
 
     const [user, setUser] = useState([]);
+    const [campaign, setCampaign] = useState([]);
+    const [myCamp, setMyCamp] = useState([]);
     const [loading, setLoading]= useState(true);
 
     useEffect(() => {
@@ -52,6 +54,10 @@ const AuthProvider = ({children}) => {
         logoutuser,
         loginWithEmailAndPassword,
         updateUserProfile,
+        campaign,
+        setCampaign,
+        myCamp,
+        setMyCamp,
     }
 
 
