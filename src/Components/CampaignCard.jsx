@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
-const CampaignCard = ({campaign}) => {
+import { Link } from "react-router-dom";
+const CampaignCard = ({ campaign }) => {
 
     return (
         <div>
@@ -23,25 +24,15 @@ const CampaignCard = ({campaign}) => {
 
                     {/* Description */}
                     <p className="text-gray-700 line-clamp-3">
-                       {campaign.description}
+                        {campaign.description}
                     </p>
 
-                    {/* Minimum Donation */}
-                    <div className="flex items-center justify-between text-gray-600">
-                        <span className="text-sm font-medium">Min Donation:</span>
-                        <span className="font-semibold">${campaign.minimumDonationAmount}</span>
-                    </div>
-
-                    {/* Deadline */}
-                    <div className="flex items-center justify-between text-gray-600">
-                        <span className="text-sm font-medium">Deadline:</span>
-                        <span className="font-semibold">{campaign.deadline}</span>
-                    </div>
-
                     {/* Action Button */}
-                    <button className="w-full py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-300">
-                        Donate Now
-                    </button>
+                    <Link to={`/campaignDetails/${campaign._id}`}>
+                        <button className="w-full py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-300">
+                            Details
+                        </button>
+                    </Link>
                 </div>
             </div>
 
@@ -49,7 +40,7 @@ const CampaignCard = ({campaign}) => {
     );
 };
 
-CampaignCard.propTypes  = {
+CampaignCard.propTypes = {
     campaign: PropTypes.object
 }
 
