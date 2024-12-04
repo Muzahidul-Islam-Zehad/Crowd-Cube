@@ -1,8 +1,33 @@
+import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
+import { authContext } from "../Providers/AuthProvider";
 
 const CampaignDetails = () => {
     const loadedData = useLoaderData();
-    console.log(loadedData);
+    // console.log(loadedData);
+
+    const {user} = useContext(authContext);
+
+    const handleDonateButton = () =>{
+        const donatedUser = {
+            id : loadedData._id,
+            name: user.displayName,
+            email: user.email
+        }
+
+        fetch('http://localhost:5000/donatedUsers', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(donatedUser)
+
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+        })
+    }
     return (
         <div>
             <div className="min-h-screen bg-gray-100 py-10 px-4">
@@ -43,7 +68,7 @@ const CampaignDetails = () => {
                         </div>
 
                         {/* Action Button */}
-                        <button className="w-full py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-300">
+                        <button onClick={handleDonateButton} className="w-full py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-300">
                             Donate Now
                         </button>
                     </div>
