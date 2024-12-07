@@ -31,13 +31,11 @@ const AddNewCampaign = () => {
         })
             .then(res => res.json())
             .then(data => {
-                if(data.acknowledged)
-                {
+                if (data.acknowledged) {
                     alert('new campaign added');
                     form.reset();
                 }
             })
-
     }
 
 

@@ -8,7 +8,9 @@ const MyDonation = () => {
     const {myDonation, setMyDonation} = useContext(authContext);
     setMyDonation(loadedData);
     return (
+        
         <div>
+            <h1 className="text-4xl font-bold text-blue-700 my-6 text-center">My Donation</h1 >
            {
                 myDonation?.map(donate => <DonationCard key={donate._id} donate={donate}></DonationCard>)
            }
