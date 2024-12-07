@@ -31,7 +31,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/myCampaign/:email',
-                element: <MyCampaign></MyCampaign>,
+                element: <PrivateRoute><MyCampaign></MyCampaign></PrivateRoute>,
                 loader: ({params}) => fetch(`https://assignment10-server-rosy-eight.vercel.app/campaigns/myDonation/${params.email}`)
             },
             {
