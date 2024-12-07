@@ -21,7 +21,7 @@ const CampaignDetails = () => {
             email: user.email
         }
 
-        fetch('http://localhost:5000/donatedUsers', {
+        fetch('https://assignment10-server-rosy-eight.vercel.app/donatedUsers', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

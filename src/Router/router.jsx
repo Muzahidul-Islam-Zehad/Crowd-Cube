@@ -23,7 +23,7 @@ const router = createBrowserRouter([
             {
                 path:'/allCampaign',
                 element: <AllCampaign></AllCampaign>,
-                loader: () => fetch('http://localhost:5000/campaigns')
+                loader: () => fetch('https://assignment10-server-rosy-eight.vercel.app/campaigns')
             },
             {
                 path: '/addNewCampaign',
@@ -32,12 +32,12 @@ const router = createBrowserRouter([
             {
                 path: '/myCampaign/:email',
                 element: <MyCampaign></MyCampaign>,
-                loader: ({params}) => fetch(`http://localhost:5000/campaigns/myDonation/${params.email}`)
+                loader: ({params}) => fetch(`https://assignment10-server-rosy-eight.vercel.app/campaigns/myDonation/${params.email}`)
             },
             {
                 path: '/myDonation/:email',
                 element: <PrivateRoute><MyDonation></MyDonation></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/donateUsers/${params.email}`)
+                loader: ({params}) => fetch(`https://assignment10-server-rosy-eight.vercel.app/donateUsers/${params.email}`)
             },
             {
                 path: '/login',
@@ -50,12 +50,12 @@ const router = createBrowserRouter([
             {
                 path: '/campaignDetails/:id',
                 element: <PrivateRoute><CampaignDetails></CampaignDetails></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/campaigns/${params.id}`)
+                loader: ({params}) => fetch(`https://assignment10-server-rosy-eight.vercel.app/campaigns/${params.id}`)
             },
             {
                 path:'/myCampaign/updateCampaign/:id',
                 element:<PrivateRoute><UpdateCampaign></UpdateCampaign></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/campaigns/${params.id}`)
+                loader: ({params}) => fetch(`https://assignment10-server-rosy-eight.vercel.app/campaigns/${params.id}`)
             }
         ],
     },

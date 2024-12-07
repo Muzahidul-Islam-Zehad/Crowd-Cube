@@ -51,7 +51,7 @@ const RegisterPage = () => {
                     .then()
                     .catch(err => console.log(err));
 
-                fetch('http://localhost:5000/users', {
+                fetch('https://assignment10-server-rosy-eight.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

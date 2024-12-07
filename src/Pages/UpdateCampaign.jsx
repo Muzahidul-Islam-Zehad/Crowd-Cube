@@ -16,7 +16,7 @@ const UpdateCampaign = () => {
 
         const updateCampaign = { thumbnail, campaignTitle, campaignType, description, minimumDonationAmount, deadline };
 
-        fetch(`http://localhost:5000/campaigns/${loadedData._id}`,{
+        fetch(`https://assignment10-server-rosy-eight.vercel.app/campaigns/${loadedData._id}`,{
             method:'PUT',
             headers:{
                 'content-type' : 'application/json',

@@ -21,7 +21,7 @@ const AddNewCampaign = () => {
 
 
 
-        fetch('http://localhost:5000/campaigns', {
+        fetch('https://assignment10-server-rosy-eight.vercel.app/campaigns', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

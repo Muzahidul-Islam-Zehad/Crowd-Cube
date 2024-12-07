@@ -13,7 +13,7 @@ const MyCampaign = () => {
 
     // Handle Delete Campaign
     const handleDeleteCampaign = (id) => {
-        fetch(`http://localhost:5000/campaigns/${id}`, {
+        fetch(`https://assignment10-server-rosy-eight.vercel.app/campaigns/${id}`, {
             method: "DELETE",
         })
             .then((res) => res.json())
