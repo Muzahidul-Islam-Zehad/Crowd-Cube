@@ -10,6 +10,7 @@ import RegisterPage from "../Pages/RegisterPage";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import CampaignDetails from "../Pages/CampaignDetails";
 import UpdateCampaign from "../Pages/UpdateCampaign";
+import RunningCampaign from "../Components/RunningCampaign";
 
 const router = createBrowserRouter([
     {
@@ -18,7 +19,14 @@ const router = createBrowserRouter([
         children: [
             {
                 path:'/',
-                element: <Home></Home>
+                element: <Home></Home>,
+                children:[
+                    {
+                        path:'/',
+                        element:<RunningCampaign></RunningCampaign>,
+                        loader: () => fetch('https://assignment10-server-rosy-eight.vercel.app/campaigns')
+                    }
+                ],
             },
             {
                 path:'/allCampaign',

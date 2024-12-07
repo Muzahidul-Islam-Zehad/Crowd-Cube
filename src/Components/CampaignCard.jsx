@@ -30,7 +30,7 @@ const CampaignCard = ({ campaign }) => {
                     {/* Action Button */}
                     <Link to={`/campaignDetails/${campaign._id}`}>
                         <button className="w-full py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-300">
-                            Details
+                            See More
                         </button>
                     </Link>
                 </div>
