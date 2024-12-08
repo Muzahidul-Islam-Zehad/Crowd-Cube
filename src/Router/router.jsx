@@ -11,6 +11,7 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import CampaignDetails from "../Pages/CampaignDetails";
 import UpdateCampaign from "../Pages/UpdateCampaign";
 import RunningCampaign from "../Components/RunningCampaign";
+import ErrorPage from "../Pages/ErrorPage";
 
 const router = createBrowserRouter([
     {
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
             }
         ],
     },
+    {
+        path: '*',
+        element: <ErrorPage></ErrorPage>
+    }
 ]);
 
 export default router;
