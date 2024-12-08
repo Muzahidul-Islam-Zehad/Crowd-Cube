@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { authContext } from "../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const AddNewCampaign = () => {
     const { user } = useContext(authContext);
@@ -32,7 +33,7 @@ const AddNewCampaign = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.acknowledged) {
-                    alert('new campaign added');
+                    Swal.fire("New Campaign Added");
                     form.reset();
                 }
             })

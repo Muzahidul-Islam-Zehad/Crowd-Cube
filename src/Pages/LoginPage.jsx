@@ -1,33 +1,41 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { authContext } from "../Providers/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
+import Swal from "sweetalert2";
 
 const LoginPage = () => {
     const { googleLogin, setUser, loginWithEmailAndPassword } = useContext(authContext);
     const navigate = useNavigate();
     const location = useLocation();
+    const [errMsg, setErrMsg] = useState(null);
 
     const LoginWithGoogle = () => {
         googleLogin()
             .then(result => {
                 setUser(result.user);
+                Swal.fire("Login successfull");
                 navigate(location?.state ? location.state : '/');
             })
             .catch(err => { console.log(err.massege) });
     }
 
-    const handleLoginForm = (e) =>{
+    const handleLoginForm = (e) => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
+        setErrMsg(null);
 
         loginWithEmailAndPassword(email, password)
-        .then(result => {
-            setUser(result.user);
-            navigate(location?.state ? location.state : '/');
-        })
+            .then(result => {
+                setUser(result.user);
+                Swal.fire("Login successfull");
+                navigate(location?.state ? location.state : '/');
+            })
+            .catch(err => {
+                setErrMsg(err);
+            })
 
     }
 
@@ -75,6 +83,12 @@ const LoginPage = () => {
                             Login
                         </button>
                     </form>
+
+                    <div className="h-3 my-2 text-center">
+                        {
+                            errMsg && <p className="text-red-600 text-lg">Invalid Email or Password</p>
+                        }
+                    </div>
 
                     <div className="divider my-6">or</div>
 

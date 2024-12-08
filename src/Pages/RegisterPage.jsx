@@ -1,16 +1,19 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { authContext } from "../Providers/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
+import Swal from "sweetalert2";
 
 const RegisterPage = () => {
     const { googleLogin, setUser, registerWithEmailAndPassword, updateUserProfile } = useContext(authContext);
     const navigate = useNavigate();
+    const [errMsg, setErrMsg] = useState(null);
 
     const LoginWithGoogle = () => {
         googleLogin()
             .then(result => {
                 setUser(result.user);
+                Swal.fire("Registered successfull");
                 navigate(location?.state ? location.state : '/');
             })
             .catch(err => { console.log(err.massege) });
@@ -18,6 +21,7 @@ const RegisterPage = () => {
 
     const handleRegistrationForm = (e) => {
         e.preventDefault();
+        setErrMsg(null);
         const form = e.target;
         const name = form.name.value;
         const email = form.email.value;
@@ -28,49 +32,69 @@ const RegisterPage = () => {
         const hasLowercase = /(?=.*[a-z])/;
 
         if (password.length < 6) {
-            alert('password must be atleast 6 character');
+            setErrMsg('Password must be at least 6 characters')
+            // alert('Password must be at least 6 characters');
             return;
-        }
-        else if (!hasUppercase.test(password)) {
-            alert('password must have one uppercase letter');
+        } else if (!hasUppercase.test(password)) {
+            setErrMsg('Password must have one uppercase letter')
+            // alert('Password must have one uppercase letter');
             return;
-        }
-        else if (!hasLowercase.test(password)) {
-            alert('password must have one lowercase letter');
+        } else if (!hasLowercase.test(password)) {
+            setErrMsg('Password must have one lowercase letter')
+            // alert('Password must have one lowercase letter');
             return;
         }
 
         const userDatabse = { name, email, photo };
         const updatedData = {
             displayName: name,
-            photoURL: photo
-        }
+            photoURL: photo,
+        };
 
         registerWithEmailAndPassword(email, password)
-            .then(result => {
+            .then((result) => {
+                const user = result.user;
 
+                // Update the user's profile
                 updateUserProfile(updatedData)
-                    .then()
-                    .catch(err => console.log(err));
+                    .then(() => {
+                        user.reload()
+                            .then(() => {
+                                // Update the authContext with new user data
+                                setUser({
+                                    displayName: user.displayName,
+                                    photoURL: user.photoURL,
+                                    email: user.email,
+                                });
 
-                fetch('https://assignment10-server-rosy-eight.vercel.app/users', {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(userDatabse)
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        if (result.user && data.acknowledged) {
-                            alert('register successful');
-                            navigate('/');
-                        }
+                                // Save user data to the database
+                                fetch('https://assignment10-server-rosy-eight.vercel.app/users', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                    },
+                                    body: JSON.stringify(userDatabse),
+                                })
+                                    .then((res) => res.json())
+                                    .then((data) => {
+                                        if (data.acknowledged) {
+                                            Swal.fire("Registered successfull");
+                                            navigate('/'); // Adjust this if a redirect is needed
+                                        }
+                                    })
+                                    .catch((err) => console.error('Error saving user:', err));
+                            })
+                            .catch((err) => console.error('Error reloading user:', err));
                     })
-                    .catch(err => console.log(err));
+                    .catch((err) => console.error('Error updating user profile:', err));
             })
-            .catch(err => console.log(err))
-    }
+            .catch((err) => {
+                setErrMsg('Email Already Registered.');
+                console.error('Error registering user:', err);
+            })
+    };
+
+
 
     return (
         <div className="min-h-screen bg-gray-100 flex items-center justify-center">
@@ -143,7 +167,11 @@ const RegisterPage = () => {
                         Register
                     </button>
                 </form>
-
+                <div className="h-3 my-2 text-center">
+                    {
+                        errMsg && <p className="text-red-600 text-lg">{errMsg}</p>
+                    }
+                </div>
                 <div className="divider my-6">or</div>
 
                 {/* Google Sign-In Button */}
