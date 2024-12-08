@@ -4,13 +4,14 @@ import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged,
 import { auth } from "../Firebase/__firebase.init";
 
 export const authContext = createContext();
-const AuthProvider = ({children}) => {
+const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState([]);
     const [campaign, setCampaign] = useState([]);
     const [myCamp, setMyCamp] = useState([]);
     const [myDonation, setMyDonation] = useState([]);
-    const [loading, setLoading]= useState(true);
+    const [loading, setLoading] = useState(true);
+    const [darkMode, setDarkMode] = useState(false);
 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
@@ -21,29 +22,29 @@ const AuthProvider = ({children}) => {
             }
 
             setLoading(false);
-          });
-    },[])
+        });
+    }, [])
 
     const googleLogin = () => {
         const provider = new GoogleAuthProvider();
-        return signInWithPopup(auth,provider);
+        return signInWithPopup(auth, provider);
     }
 
-    const registerWithEmailAndPassword = (email, password) =>{
+    const registerWithEmailAndPassword = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
     const loginWithEmailAndPassword = (email, password) => {
         return signInWithEmailAndPassword(auth, email, password)
     }
-    const updateUserProfile = (updatedData) =>{
-        return updateProfile(auth.currentUser,updatedData);
+    const updateUserProfile = (updatedData) => {
+        return updateProfile(auth.currentUser, updatedData);
     }
 
-    const logoutuser = () =>{
+    const logoutuser = () => {
         return signOut(auth);
     }
-    console.log(user , loading);
+    console.log(user, loading);
 
     const contextContainer = {
         user,
@@ -61,6 +62,8 @@ const AuthProvider = ({children}) => {
         setMyCamp,
         myDonation,
         setMyDonation,
+        darkMode,
+        setDarkMode,
     }
 
 
