@@ -44,7 +44,6 @@ const AuthProvider = ({ children }) => {
     const logoutuser = () => {
         return signOut(auth);
     }
-    console.log(user, loading);
 
     const contextContainer = {
         user,
