@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import CampaignCard from "./CampaignCard";
 import { useEffect, useState } from "react";
+import { Typewriter } from "react-simple-typewriter";
 
 const RunningCampaign = () => {
     const loadedData = useLoaderData();
@@ -33,7 +34,15 @@ const RunningCampaign = () => {
                     <div className="bg-gray-50 min-h-screen py-10">
                         <div className="container mx-auto px-4">
                             <h1 className="text-4xl font-bold text-center text-teal-600 mb-8">
-                                Running Campaigns
+                                <Typewriter
+                                    words={["Running Campaigns","Donate Now"]}
+                                    loop={false}
+                                    cursor
+                                    cursorStyle="_"
+                                    typeSpeed={100}
+                                    deleteSpeed={50}
+                                    delaySpeed={1000}
+                                />
                             </h1>
                             <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {runningCampaign.map((campaign, idx) => {
@@ -42,7 +51,7 @@ const RunningCampaign = () => {
                                             <CampaignCard key={campaign._id} campaign={campaign}></CampaignCard>
                                         );
                                     }
-                                    return null; 
+                                    return null;
                                 })}
                             </div>
                         </div>

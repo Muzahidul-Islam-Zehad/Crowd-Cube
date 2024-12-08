@@ -1,10 +1,16 @@
+import { Slide } from "react-awesome-reveal";
 
 const HowItWorks = () => {
     return (
         <div>
             <section className="py-16 bg-gradient-to-b from-white to-gray-100">
                 <div className="container mx-auto px-6 text-center">
-                    <h2 className="text-4xl font-bold text-gray-800 mb-6">How It Works</h2>
+                    <Slide direction="left" duration={1000} triggerOnce>
+                        <div className="content">
+                            <h2 className="text-4xl font-bold text-gray-800 mb-6">How It Works</h2>
+                        </div>
+                    </Slide>
+
                     <p className="text-gray-600 mb-12">
                         Start your crowdfunding journey in just three simple steps.
                     </p>
