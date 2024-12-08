@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { authContext } from "../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const MyCampaign = () => {
     const loadedData = useLoaderData();
@@ -11,21 +12,37 @@ const MyCampaign = () => {
         setMyCamp(loadedData);
     }, [loadedData, setMyCamp]);
 
-    // Handle Delete Campaign
     const handleDeleteCampaign = (id) => {
-        fetch(`https://assignment10-server-rosy-eight.vercel.app/campaigns/${id}`, {
-            method: "DELETE",
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                if (data.deletedCount > 0) {
-                    // Filter out the deleted campaign and update the state
-                    
-                    const updatedCampaigns = myCamp.filter((campaign) => campaign._id !== id);
-                    setMyCamp(updatedCampaigns);
-                }
-            })
-            .catch((error) => console.error("Error deleting campaign:", error));
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                  
+                fetch(`https://assignment10-server-rosy-eight.vercel.app/campaigns/${id}`, {
+                    method: "DELETE",
+                })
+                    .then((res) => res.json())
+                    .then((data) => {
+                        if (data.deletedCount > 0) {
+
+                            const updatedCampaigns = myCamp.filter((campaign) => campaign._id !== id);
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                              });
+                            setMyCamp(updatedCampaigns);
+                        }
+                    })
+                    .catch((error) => console.error("Error deleting campaign:", error));
+            }
+        });
     };
 
     return (

@@ -44,12 +44,12 @@ const Navbar = () => {
                         </div>
                         <ul
                             tabIndex={0}
-                            className="menu menu-sm dropdown-content bg-[#ffffff] text-[#111827] rounded-box z-[1] mt-3 w-52 p-2 shadow-lg">
+                            className="menu menu-sm dropdown-content bg-[#ffffff] text-[#111827] rounded-box z-[100] mt-3 w-52 p-2 shadow-lg">
                             {links}
                         </ul>
                     </div>
                     <a className="btn btn-ghost text-xl text-[#2563eb] font-bold hover:bg-[#e5e7eb]">
-                        Crowdcube
+                        CrowdCube
                     </a>
                 </div>
 

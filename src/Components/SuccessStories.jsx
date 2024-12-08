@@ -12,7 +12,7 @@ const SuccessStories = () => {
                         {/* Story 1 */}
                         <div className="w-full md:w-1/3 p-4 bg-white rounded-lg shadow-lg transform transition hover:-translate-y-2 hover:shadow-2xl">
                             <img
-                                src="https://via.placeholder.com/300x200"
+                                src={'https://i.ibb.co.com/KW4N1qP/card1.jpg'}
                                 alt="Success Story 1"
                                 className="w-full rounded-t-lg"
                             />
@@ -29,7 +29,7 @@ const SuccessStories = () => {
                         {/* Story 2 */}
                         <div className="w-full md:w-1/3 p-4 bg-white rounded-lg shadow-lg transform transition hover:-translate-y-2 hover:shadow-2xl">
                             <img
-                                src="https://via.placeholder.com/300x200"
+                                src={'https://i.ibb.co.com/F495Rx5/card2.jpg'}
                                 alt="Success Story 2"
                                 className="w-full rounded-t-lg"
                             />
@@ -46,7 +46,7 @@ const SuccessStories = () => {
                         {/* Story 3 */}
                         <div className="w-full md:w-1/3 p-4 bg-white rounded-lg shadow-lg transform transition hover:-translate-y-2 hover:shadow-2xl">
                             <img
-                                src="https://via.placeholder.com/300x200"
+                                src={'https://i.ibb.co.com/44wpL9q/card3.jpg'}
                                 alt="Success Story 3"
                                 className="w-full rounded-t-lg"
                             />

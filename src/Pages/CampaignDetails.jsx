@@ -4,7 +4,6 @@ import { authContext } from "../Providers/AuthProvider";
 
 const CampaignDetails = () => {
     const loadedData = useLoaderData();
-    // console.log(loadedData);
 
     const {user} = useContext(authContext);
 
@@ -30,8 +29,7 @@ const CampaignDetails = () => {
 
         })
         .then(res => res.json())
-        .then(data => {
-            console.log(data);
+        .then(() => {
         })
     }
     return (

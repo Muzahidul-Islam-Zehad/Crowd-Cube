@@ -1,3 +1,5 @@
+import { FaFacebook, FaInstagram, FaTwitterSquare } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
     return (
@@ -7,7 +9,7 @@ const Footer = () => {
                 <div className="flex flex-wrap justify-between gap-8">
                     {/* Logo & Description */}
                     <div className="w-full md:w-1/3">
-                        <h2 className="text-2xl font-bold mb-4 text-primary">CrowdFundPro</h2>
+                        <h2 className="text-2xl font-bold mb-4 text-primary">CrowdCube</h2>
                         <p className="text-gray-600">
                             Your platform to bring innovative ideas, creative projects, and meaningful
                             causes to life through the power of collective support.
@@ -19,28 +21,25 @@ const Footer = () => {
                         <h3 className="text-lg font-semibold mb-4 text-primary">Quick Links</h3>
                         <ul>
                             <li className="mb-2">
-                                <a
-                                    href="/about"
+                                <Link
                                     className="hover:text-accent transition-colors"
                                 >
                                     About Us
-                                </a>
+                                </Link>
                             </li>
                             <li className="mb-2">
-                                <a
-                                    href="/projects"
+                                <Link
                                     className="hover:text-accent transition-colors"
                                 >
                                     Explore Projects
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a
-                                    href="/contact"
+                                <Link
                                     className="hover:text-accent transition-colors"
                                 >
                                     Contact Us
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </div>
@@ -49,24 +48,24 @@ const Footer = () => {
                     <div className="w-full md:w-1/3">
                         <h3 className="text-lg font-semibold mb-4 text-primary">Follow Us</h3>
                         <div className="flex space-x-4">
-                            <a
-                                href="https://facebook.com"
-                                className="text-gray-600 hover:text-blue-600 transition-colors"
+                            <Link
+                                to="https://facebook.com"
+                                className="text-2xl text-gray-600 hover:text-blue-600 transition-colors"
                             >
-                                <i className="fab fa-facebook-f text-2xl"></i>
-                            </a>
-                            <a
-                                href="https://twitter.com"
-                                className="text-gray-600 hover:text-blue-400 transition-colors"
+                                <FaFacebook />
+                            </Link>
+                            <Link
+                                to="https://twitter.com"
+                                className="text-2xl text-gray-600 hover:text-blue-400 transition-colors"
                             >
-                                <i className="fab fa-twitter text-2xl"></i>
-                            </a>
-                            <a
-                                href="https://instagram.com"
-                                className="text-gray-600 hover:text-pink-500 transition-colors"
+                                <FaTwitterSquare />
+                            </Link>
+                            <Link
+                                to="https://instagram.com"
+                                className="text-2xl text-gray-600 hover:text-pink-500 transition-colors"
                             >
-                                <i className="fab fa-instagram text-2xl"></i>
-                            </a>
+                                <FaInstagram />
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -77,21 +76,19 @@ const Footer = () => {
                 {/* Bottom Section */}
                 <div className="flex flex-wrap justify-between items-center">
                     <p className="text-gray-600">
-                        &copy; {new Date().getFullYear()} CrowdFundPro. All Rights Reserved.
+                        &copy; {new Date().getFullYear()} CrowdCube. All Rights Reserved.
                     </p>
                     <div className="flex space-x-4">
-                        <a
-                            href="/terms"
+                        <Link
                             className="hover:text-accent transition-colors"
                         >
                             Terms of Service
-                        </a>
-                        <a
-                            href="/privacy"
+                        </Link>
+                        <Link
                             className="hover:text-accent transition-colors"
                         >
                             Privacy Policy
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

@@ -31,7 +31,7 @@ const AllCampaign = () => {
                             <h1 className="text-4xl font-bold text-blue-700 my-6 text-center">All Campaigns</h1 >
                         </div>
 
-                        <div className="grid grid-cols-3 gap-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 
                             {
                                 campaign.map(campaign => <CampaignCard key={campaign._id} campaign={campaign}></CampaignCard>)

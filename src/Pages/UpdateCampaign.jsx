@@ -1,10 +1,11 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const UpdateCampaign = () => {
     const loadedData = useLoaderData();
-    console.log(loadedData);
+    const navigate = useNavigate();
 
-    const handleUpdateCampaign = (e) =>{
+    const handleUpdateCampaign = (e) => {
         e.preventDefault();
         const form = e.target;
         const thumbnail = form.photo.value;
@@ -16,17 +17,37 @@ const UpdateCampaign = () => {
 
         const updateCampaign = { thumbnail, campaignTitle, campaignType, description, minimumDonationAmount, deadline };
 
-        fetch(`https://assignment10-server-rosy-eight.vercel.app/campaigns/${loadedData._id}`,{
-            method:'PUT',
-            headers:{
-                'content-type' : 'application/json',
-            },
-            body: JSON.stringify(updateCampaign)
-        })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-        })
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, update it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                fetch(`https://assignment10-server-rosy-eight.vercel.app/campaigns/${loadedData._id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'content-type': 'application/json',
+                    },
+                    body: JSON.stringify(updateCampaign)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.acknowledged) {
+                            Swal.fire({
+                                title: "Updated!",
+                                text: "Your file has been updated.",
+                                icon: "success"
+                            });
+                            navigate(`/myCampaign/${loadedData.email}`);
+                        }
+                    })
+            }
+        });
     }
 
     return (
@@ -40,7 +61,7 @@ const UpdateCampaign = () => {
                             Thumbnail (Image URL)
                         </label>
                         <input
-                        name="photo"
+                            name="photo"
                             defaultValue={loadedData?.thumbnail}
                             type="text"
                             placeholder="Enter image URL"
@@ -54,7 +75,7 @@ const UpdateCampaign = () => {
                             Campaign Title
                         </label>
                         <input
-                        name="title"
+                            name="title"
                             defaultValue={loadedData?.campaignTitle}
                             type="text"
                             placeholder="Enter campaign title"
@@ -68,7 +89,7 @@ const UpdateCampaign = () => {
                             Campaign Type
                         </label>
                         <select
-                        name="type"
+                            name="type"
                             defaultValue={loadedData?.campaignType}
                             className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                         >
@@ -85,7 +106,7 @@ const UpdateCampaign = () => {
                             Description
                         </label>
                         <textarea
-                        name="description"
+                            name="description"
                             defaultValue={loadedData?.description}
                             rows="4"
                             placeholder="Write campaign description"
@@ -99,7 +120,7 @@ const UpdateCampaign = () => {
                             Minimum Donation Amount
                         </label>
                         <input
-                        name="amount"
+                            name="amount"
                             defaultValue={loadedData?.minimumDonationAmount}
                             type="number"
                             placeholder="Enter minimum donation amount"
@@ -113,7 +134,7 @@ const UpdateCampaign = () => {
                             Deadline
                         </label>
                         <input
-                        name="deadline"
+                            name="deadline"
                             defaultValue={loadedData?.deadline}
                             type="date"
                             className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
