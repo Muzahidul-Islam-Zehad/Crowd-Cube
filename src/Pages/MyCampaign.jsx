@@ -7,7 +7,6 @@ const MyCampaign = () => {
     const loadedData = useLoaderData();
     const { myCamp, setMyCamp } = useContext(authContext);
 
-    // Set the initial state
     React.useEffect(() => {
         setMyCamp(loadedData);
     }, [loadedData, setMyCamp]);

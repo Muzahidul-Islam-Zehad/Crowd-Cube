@@ -9,7 +9,6 @@ const HowItWorks = () => {
                         Start your crowdfunding journey in just three simple steps.
                     </p>
                     <div className="flex flex-wrap justify-center gap-8">
-                        {/* Step 1 */}
                         <div className="w-full md:w-1/3 p-6 bg-white shadow-xl rounded-lg transform transition hover:-translate-y-2 hover:shadow-2xl">
                             <div className="mb-4 text-primary">
                                 <i className="fas fa-lightbulb text-5xl text-blue-500"></i>
@@ -20,7 +19,6 @@ const HowItWorks = () => {
                             </p>
                         </div>
 
-                        {/* Step 2 */}
                         <div className="w-full md:w-1/3 p-6 bg-white shadow-xl rounded-lg transform transition hover:-translate-y-2 hover:shadow-2xl">
                             <div className="mb-4 text-secondary">
                                 <i className="fas fa-users text-5xl text-pink-500"></i>
@@ -31,7 +29,6 @@ const HowItWorks = () => {
                             </p>
                         </div>
 
-                        {/* Step 3 */}
                         <div className="w-full md:w-1/3 p-6 bg-white shadow-xl rounded-lg transform transition hover:-translate-y-2 hover:shadow-2xl">
                             <div className="mb-4 text-accent">
                                 <i className="fas fa-heart text-5xl text-yellow-500"></i>

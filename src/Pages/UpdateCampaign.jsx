@@ -55,7 +55,7 @@ const UpdateCampaign = () => {
             <div className="max-w-3xl w-full bg-white rounded-lg shadow-lg p-8">
                 <h2 className="text-3xl font-bold text-blue-700 text-center mb-6">Update Campaign</h2>
                 <form onSubmit={handleUpdateCampaign} className="space-y-6">
-                    {/* Thumbnail */}
+                    
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
                             Thumbnail (Image URL)
@@ -69,7 +69,7 @@ const UpdateCampaign = () => {
                         />
                     </div>
 
-                    {/* Campaign Title */}
+                   
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
                             Campaign Title
@@ -83,7 +83,7 @@ const UpdateCampaign = () => {
                         />
                     </div>
 
-                    {/* Campaign Type */}
+                   
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
                             Campaign Type
@@ -100,7 +100,7 @@ const UpdateCampaign = () => {
                         </select>
                     </div>
 
-                    {/* Description */}
+                   
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
                             Description
@@ -114,7 +114,6 @@ const UpdateCampaign = () => {
                         ></textarea>
                     </div>
 
-                    {/* Minimum Donation Amount */}
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
                             Minimum Donation Amount
@@ -128,7 +127,6 @@ const UpdateCampaign = () => {
                         />
                     </div>
 
-                    {/* Deadline */}
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
                             Deadline
@@ -141,7 +139,6 @@ const UpdateCampaign = () => {
                         />
                     </div>
 
-                    {/* Update Button */}
                     <div className="text-center">
                         <button
                             type="submit"

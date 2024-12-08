@@ -27,7 +27,6 @@ const Navbar = () => {
         <div>
             <div className="navbar bg-[#f9fafb] shadow-md">
                 <div className="navbar-start">
-                    {/* Mobile Menu */}
                     <div className="dropdown">
                         <div
                             tabIndex={0}
@@ -57,14 +56,12 @@ const Navbar = () => {
                     </a>
                 </div>
 
-                {/* Desktop Menu */}
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 gap-4 text-[#111827] font-medium">
                         {links}
                     </ul>
                 </div>
 
-                {/* User Dropdown or Auth Buttons */}
                 <div className="navbar-end">
                     <div className="join">
                         {user?.email ? (

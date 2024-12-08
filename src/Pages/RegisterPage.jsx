@@ -33,15 +33,12 @@ const RegisterPage = () => {
 
         if (password.length < 6) {
             setErrMsg('Password must be at least 6 characters')
-            // alert('Password must be at least 6 characters');
             return;
         } else if (!hasUppercase.test(password)) {
             setErrMsg('Password must have one uppercase letter')
-            // alert('Password must have one uppercase letter');
             return;
         } else if (!hasLowercase.test(password)) {
             setErrMsg('Password must have one lowercase letter')
-            // alert('Password must have one lowercase letter');
             return;
         }
 
@@ -55,19 +52,16 @@ const RegisterPage = () => {
             .then((result) => {
                 const user = result.user;
 
-                // Update the user's profile
                 updateUserProfile(updatedData)
                     .then(() => {
                         user.reload()
                             .then(() => {
-                                // Update the authContext with new user data
                                 setUser({
                                     displayName: user.displayName,
                                     photoURL: user.photoURL,
                                     email: user.email,
                                 });
 
-                                // Save user data to the database
                                 fetch('https://assignment10-server-rosy-eight.vercel.app/users', {
                                     method: 'POST',
                                     headers: {
@@ -79,7 +73,7 @@ const RegisterPage = () => {
                                     .then((data) => {
                                         if (data.acknowledged) {
                                             Swal.fire("Registered successfull");
-                                            navigate('/'); // Adjust this if a redirect is needed
+                                            navigate('/'); 
                                         }
                                     })
                                     .catch((err) => console.error('Error saving user:', err));
@@ -103,7 +97,7 @@ const RegisterPage = () => {
                     Create Your Account
                 </h2>
                 <form onSubmit={handleRegistrationForm} className="space-y-4">
-                    {/* Name Field */}
+                    
                     <div>
                         <label htmlFor="name" className="block text-sm font-medium text-gray-600">
                             Name
@@ -117,7 +111,7 @@ const RegisterPage = () => {
                         />
                     </div>
 
-                    {/* Email Field */}
+                    
                     <div>
                         <label htmlFor="email" className="block text-sm font-medium text-gray-600">
                             Email Address
@@ -131,7 +125,7 @@ const RegisterPage = () => {
                         />
                     </div>
 
-                    {/* Photo URL Field */}
+                    
                     <div>
                         <label htmlFor="photoURL" className="block text-sm font-medium text-gray-600">
                             Photo URL
@@ -145,7 +139,6 @@ const RegisterPage = () => {
                         />
                     </div>
 
-                    {/* Password Field */}
                     <div>
                         <label htmlFor="password" className="block text-sm font-medium text-gray-600">
                             Password
@@ -159,7 +152,6 @@ const RegisterPage = () => {
                         />
                     </div>
 
-                    {/* Register Button */}
                     <button
                         type="submit"
                         className="btn btn-primary w-full hover:bg-blue-700 transition-all"
@@ -174,7 +166,6 @@ const RegisterPage = () => {
                 </div>
                 <div className="divider my-6">or</div>
 
-                {/* Google Sign-In Button */}
                 <button onClick={LoginWithGoogle} className="btn btn-outline w-full hover:bg-gray-100">
                     <span className="text-2xl">
                         <FcGoogle />
@@ -182,7 +173,6 @@ const RegisterPage = () => {
                     Sign Up with Google
                 </button>
 
-                {/* Redirect to Login Page */}
                 <p className="text-sm text-center mt-4 text-gray-600">
                     Already have an account?{" "}
                     <Link to="/login" className="text-blue-500 hover:underline">

@@ -5,9 +5,7 @@ const Footer = () => {
     return (
         <footer className="bg-gray-100 text-gray-800">
             <div className="container mx-auto px-6 py-10">
-                {/* Top Section */}
                 <div className="flex flex-wrap justify-between gap-8">
-                    {/* Logo & Description */}
                     <div className="w-full md:w-1/3">
                         <h2 className="text-2xl font-bold mb-4 text-primary">CrowdCube</h2>
                         <p className="text-gray-600">
@@ -16,7 +14,6 @@ const Footer = () => {
                         </p>
                     </div>
 
-                    {/* Quick Links */}
                     <div className="w-full md:w-1/3">
                         <h3 className="text-lg font-semibold mb-4 text-primary">Quick Links</h3>
                         <ul>
@@ -44,7 +41,6 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    {/* Social Media */}
                     <div className="w-full md:w-1/3">
                         <h3 className="text-lg font-semibold mb-4 text-primary">Follow Us</h3>
                         <div className="flex space-x-4">
@@ -70,10 +66,8 @@ const Footer = () => {
                     </div>
                 </div>
 
-                {/* Divider */}
                 <div className="my-6 border-t border-gray-300"></div>
 
-                {/* Bottom Section */}
                 <div className="flex flex-wrap justify-between items-center">
                     <p className="text-gray-600">
                         &copy; {new Date().getFullYear()} CrowdCube. All Rights Reserved.

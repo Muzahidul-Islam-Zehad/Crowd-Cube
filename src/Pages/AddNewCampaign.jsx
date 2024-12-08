@@ -48,7 +48,7 @@ const AddNewCampaign = () => {
                     Add New Campaign
                 </h2>
                 <form onSubmit={handleAddNewCampaign} className="space-y-6">
-                    {/* Thumbnail URL */}
+                   
                     <div>
                         <label className="block font-medium text-gray-700 mb-2" htmlFor="imageUrl">
                             Thumbnail URL
@@ -63,7 +63,7 @@ const AddNewCampaign = () => {
                         />
                     </div>
 
-                    {/* Campaign Title */}
+                   
                     <div>
                         <label className="block font-medium text-gray-700 mb-2" htmlFor="title">
                             Campaign Title
@@ -78,7 +78,7 @@ const AddNewCampaign = () => {
                         />
                     </div>
 
-                    {/* Campaign Type */}
+                    
                     <div>
                         <label className="block font-medium text-gray-700 mb-2" htmlFor="type">
                             Campaign Type
@@ -97,7 +97,7 @@ const AddNewCampaign = () => {
                         </select>
                     </div>
 
-                    {/* Description */}
+                    
                     <div>
                         <label className="block font-medium text-gray-700 mb-2" htmlFor="description">
                             Description
@@ -112,7 +112,6 @@ const AddNewCampaign = () => {
                         ></textarea>
                     </div>
 
-                    {/* Minimum Donation Amount */}
                     <div>
                         <label className="block font-medium text-gray-700 mb-2" htmlFor="minAmount">
                             Minimum Donation Amount
@@ -127,7 +126,6 @@ const AddNewCampaign = () => {
                         />
                     </div>
 
-                    {/* Deadline */}
                     <div>
                         <label className="block font-medium text-gray-700 mb-2" htmlFor="deadline">
                             Deadline
@@ -141,7 +139,6 @@ const AddNewCampaign = () => {
                         />
                     </div>
 
-                    {/* User Email */}
                     <div>
                         <label className="block font-medium text-gray-700 mb-2" htmlFor="userEmail">
                             User Email (Read Only)
@@ -157,7 +154,6 @@ const AddNewCampaign = () => {
                         />
                     </div>
 
-                    {/* User Name */}
                     <div>
                         <label className="block font-medium text-gray-700 mb-2" htmlFor="userName">
                             User Name (Read Only)
@@ -173,7 +169,6 @@ const AddNewCampaign = () => {
                         />
                     </div>
 
-                    {/* Add Button */}
                     <div>
                         <button
                             type="submit"

@@ -47,7 +47,7 @@ const LoginPage = () => {
                         Welcome Back!
                     </h2>
                     <form onSubmit={handleLoginForm} className="space-y-4">
-                        {/* Email Field */}
+                        
                         <div>
                             <label htmlFor="email" className="block text-sm font-medium text-gray-600">
                                 Email Address
@@ -60,8 +60,6 @@ const LoginPage = () => {
                                 className="input input-bordered w-full mt-2"
                             />
                         </div>
-
-                        {/* Password Field */}
                         <div>
                             <label htmlFor="password" className="block text-sm font-medium text-gray-600">
                                 Password
@@ -75,7 +73,6 @@ const LoginPage = () => {
                             />
                         </div>
 
-                        {/* Login Button */}
                         <button
                             type="submit"
                             className="btn btn-primary w-full hover:bg-blue-700 transition-all"
@@ -92,7 +89,6 @@ const LoginPage = () => {
 
                     <div className="divider my-6">or</div>
 
-                    {/* Google Login */}
                     <button onClick={LoginWithGoogle} className="btn btn-outline w-full hover:bg-gray-100">
                         <span className="text-2xl">
                             <FcGoogle />
@@ -100,7 +96,6 @@ const LoginPage = () => {
                         Continue with Google
                     </button>
 
-                    {/* Redirect to Register Page */}
                     <p className="text-sm text-center mt-4 text-gray-600">
                         Don’t have an account?{" "}
                         <Link to="/register" className="text-blue-500 hover:underline">

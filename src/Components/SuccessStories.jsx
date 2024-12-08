@@ -9,7 +9,6 @@ const SuccessStories = () => {
                         See how others turned their dreams into reality with CrowdFundPro.
                     </p>
                     <div className="flex flex-wrap justify-center gap-8">
-                        {/* Story 1 */}
                         <div className="w-full md:w-1/3 p-4 bg-white rounded-lg shadow-lg transform transition hover:-translate-y-2 hover:shadow-2xl">
                             <img
                                 src={'https://i.ibb.co.com/KW4N1qP/card1.jpg'}
@@ -26,7 +25,6 @@ const SuccessStories = () => {
                             </div>
                         </div>
 
-                        {/* Story 2 */}
                         <div className="w-full md:w-1/3 p-4 bg-white rounded-lg shadow-lg transform transition hover:-translate-y-2 hover:shadow-2xl">
                             <img
                                 src={'https://i.ibb.co.com/F495Rx5/card2.jpg'}
@@ -43,7 +41,6 @@ const SuccessStories = () => {
                             </div>
                         </div>
 
-                        {/* Story 3 */}
                         <div className="w-full md:w-1/3 p-4 bg-white rounded-lg shadow-lg transform transition hover:-translate-y-2 hover:shadow-2xl">
                             <img
                                 src={'https://i.ibb.co.com/44wpL9q/card3.jpg'}

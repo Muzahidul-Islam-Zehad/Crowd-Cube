@@ -42,7 +42,7 @@ const RunningCampaign = () => {
                                             <CampaignCard key={campaign._id} campaign={campaign}></CampaignCard>
                                         );
                                     }
-                                    return null; // Return null to explicitly handle else condition
+                                    return null; 
                                 })}
                             </div>
                         </div>
