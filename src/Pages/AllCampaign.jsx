@@ -1,5 +1,4 @@
-import { useLoaderData } from "react-router-dom";
-import CampaignCard from "../Components/CampaignCard";
+import { Link, useLoaderData } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { authContext } from "../Providers/AuthProvider";
 
@@ -31,12 +30,43 @@ const AllCampaign = () => {
                             <h1 className="text-4xl font-bold text-blue-700 my-6 text-center">All Campaigns</h1 >
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-
-                            {
-                                campaign.map(campaign => <CampaignCard key={campaign._id} campaign={campaign}></CampaignCard>)
-                            }
+                        <div className="overflow-x-auto">
+                            <table className="table-auto w-full bg-white rounded-lg shadow">
+                                <thead className="bg-gray-200">
+                                    <tr>
+                                        <th className="px-4 py-2 text-left">#</th>
+                                        <th className="px-4 py-2 text-left">Thumbnail</th>
+                                        <th className="px-4 py-2 text-left">Title</th>
+                                        <th className="px-4 py-2 text-left">Description</th>
+                                        <th className="px-4 py-2 text-center">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {campaign.map((camp, idx) => (
+                                        <tr key={camp._id} className="border-t">
+                                            <td className="px-4 py-2">{idx + 1}</td>
+                                            <td className="px-4 py-2"><img className="w-20 h-20 rounded-lg" src={camp.thumbnail} alt="camp" /></td>
+                                            <td className="px-4 py-2">{camp.campaignTitle}</td>
+                                            <td className="px-4 py-2 truncate">{camp.description}</td>
+                                            <td className="px-4 py-2 text-center">
+                                                <Link to={`/campaignDetails/${camp._id}`}>
+                                                    <button
+                                                        className="btn btn-primary text-sm"
+                                                    >
+                                                        See More
+                                                    </button>
+                                                </Link>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
                         </div>
+
+                        {campaign.length === 0 && (
+                            <p className="text-center text-gray-600 mt-6">No campaigns found.</p>
+                        )}
+
                     </div>
             }
         </>

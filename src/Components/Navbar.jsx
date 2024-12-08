@@ -9,9 +9,13 @@ const Navbar = () => {
     const links = <>
         <li><NavLink to={'/'}>Home</NavLink></li>
         <li><NavLink to={'/allCampaign'}>All Campaign</NavLink></li>
-        <li><NavLink to={'/addNewCampaign'}>Add New Campaign</NavLink></li>
-        <li><NavLink to={`/myCampaign/${user.email}`}>My Campaign</NavLink></li>
-        <li><NavLink to={`/myDonation/${user.email}`}>My Donations</NavLink></li>
+        {
+            user?.email && <>
+                <li><NavLink to={'/addNewCampaign'}>Add New Campaign</NavLink></li>
+                <li><NavLink to={`/myCampaign/${user.email}`}>My Campaign</NavLink></li>
+                <li><NavLink to={`/myDonation/${user.email}`}>My Donations</NavLink></li>
+            </>
+        }
     </>
 
     const handleLogOut = () => {
