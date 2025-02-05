@@ -1,6 +1,6 @@
 # CrowdCube
 
-[Your Live Site URL](https://crowdcube-8ab29.web.app) 
+[Live Site URL](https://crowdcube-8ab29.web.app) 
 
 This website is a powerful crowdfunding platform that empowers anyone to raise funds for their passions, ideas, and causes. Whether you need help with medical bills, want to create an innovative project like a film or app, or have a groundbreaking startup idea, our platform connects you with a supportive community ready to help.
 
